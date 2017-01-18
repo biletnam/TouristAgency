@@ -16,7 +16,7 @@ __fastcall TBoxFrame::TBoxFrame(TWinControl* Owner, const TColumns &aColumn)
 	: TFrame(Owner) {
 	Parent = Owner;
 	Name = "_" + UIntToStr(Cardinal(this)); ;
-	FieldName->Caption = aColumn.CaptionField;
+	FieldName->Caption = aColumn.DataField;
 	FieldLookup->DataField = aColumn.DataField;
 	FieldLookup->KeyField = aColumn.KeyField;
 	FieldLookup->ListField = aColumn.ListField;

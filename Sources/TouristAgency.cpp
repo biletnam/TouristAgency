@@ -10,6 +10,7 @@ USEFORM("Catalog.cpp", Directory);
 USEFORM("BoxFrm.cpp", BoxFrame); /* TFrame: File Type */
 USEFORM("EditFrm.cpp", EditFrame); /* TFrame: File Type */
 USEFORM("Connection.cpp", ConModule); /* TDataModule: File Type */
+USEFORM("Selling.cpp", SellingTickets);
 //---------------------------------------------------------------------------
 WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -19,6 +20,7 @@ WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->MainFormOnTaskBar = true;
 		Application->CreateForm(__classid(TAgency), &Agency);
 		Application->CreateForm(__classid(TConModule), &ConModule);
+		Application->CreateForm(__classid(TSellingTickets), &SellingTickets);
 		Application->Run();
 	}
 	catch (Exception &exception)

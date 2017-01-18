@@ -32,7 +32,6 @@ __published:	// IDE-managed Components
 	TFilterComboBox *OrderField;
 	TSpeedButton *SearchBtn;
 	TLabel *FilterLabel;
-	TPanel *FilterPanel;
 	TFilterComboBox *FilterField;
 	TFilterComboBox *FilterWay;
 	TEdit *FilterEdit;

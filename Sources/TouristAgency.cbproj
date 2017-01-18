@@ -4,7 +4,7 @@
 			<ProjectVersion>12.3</ProjectVersion>
 			<MainSource>TouristAgency.cpp</MainSource>
 			<Base>True</Base>
-			<Config Condition="'$(Config)'==''">Release</Config>
+			<Config Condition="'$(Config)'==''">Debug</Config>
 			<Platform>Win32</Platform>
 			<AppType>Application</AppType>
 			<FrameworkType>VCL</FrameworkType>
@@ -23,10 +23,10 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<LinkPackageStatics>rtl.lib;vcl.lib;vcldb.lib;dbrtl.lib;adortl.lib;bdertl.lib;ibxpress.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;vclx.lib;vclimg.lib</LinkPackageStatics>
 			<OutputExt>exe</OutputExt>
 			<ILINK_LibraryPath>$(BDS)\ObjRepos\EN\Cpp\;TouristAgency\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<PackageImports>vclimg.bpi;vcl.bpi;vclx.bpi;dbrtl.bpi;Rave90VCL.bpi;bdertl.bpi;rtl.bpi;bcbie.bpi;xmlrtl.bpi;vclactnband.bpi;bcbsmp.bpi;VclSmp.bpi;svnui.bpi;svn.bpi;TeeUI.bpi;Tee.bpi;TeeDB.bpi;vcldb.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;vclib.bpi;ibxpress.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;intrawebdb_110_150.bpi;Intraweb_110_150.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdb.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;vclribbon.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DataSnapIndy10ServerTransport.bpi;DataSnapProviderClient.bpi;DbxClientDriver.bpi;DataSnapClient.bpi;dbxcds.bpi;DataSnapServer.bpi;AzureCloud.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;DBXFirebirdDriver.bpi;DBXSybaseASEDriver.bpi;DBXSybaseASADriver.bpi;DBXOracleDriver.bpi;DBXMSSQLDriver.bpi;DBXInformixDriver.bpi;DBXDb2Driver.bpi;CodeSiteExpressVcl.bpi</PackageImports>
-			<LinkPackageImports>rtl.bpi;vcl.bpi;vcldb.bpi;dbrtl.bpi;adortl.bpi;bdertl.bpi;ibxpress.bpi;dsnap.bpi;dbexpress.bpi;DbxCommonDriver.bpi;vclx.bpi;vclimg.bpi</LinkPackageImports>
 			<Multithreaded>true</Multithreaded>
 			<IncludePath>$(BDS)\ObjRepos\EN\Cpp\;TouristAgency\;$(IncludePath)</IncludePath>
 			<AllPackageLibs>rtl.lib;vcl.lib;vcldb.lib;dbrtl.lib;adortl.lib;bdertl.lib;ibxpress.lib;dsnap.lib;dbexpress.lib;DbxCommonDriver.lib;vclx.lib;vclimg.lib</AllPackageLibs>
@@ -103,6 +103,11 @@
 				<DependentOn>Metadata.h</DependentOn>
 				<BuildOrder>5</BuildOrder>
 			</CppCompile>
+			<CppCompile Include="Selling.cpp">
+				<Form>SellingTickets</Form>
+				<DependentOn>Selling.h</DependentOn>
+				<BuildOrder>9</BuildOrder>
+			</CppCompile>
 			<CppCompile Include="TouristAgency.cpp">
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
@@ -110,11 +115,12 @@
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
 			<FormResources Include="Main.dfm"/>
-			<FormResources Include="Editor.dfm"/>
+			<FormResources Include="Selling.dfm"/>
 			<FormResources Include="Catalog.dfm"/>
 			<FormResources Include="BoxFrm.dfm"/>
-			<FormResources Include="EditFrm.dfm"/>
 			<FormResources Include="Connection.dfm"/>
+			<FormResources Include="Editor.dfm"/>
+			<FormResources Include="EditFrm.dfm"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
@@ -138,7 +144,7 @@
 						<Source Name="MainSource">TouristAgency.cpp</Source>
 					</Source>
 					<VersionInfo>
-						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
 						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">0</VersionInfo>
@@ -149,8 +155,8 @@
 						<VersionInfo Name="Special">False</VersionInfo>
 						<VersionInfo Name="Private">False</VersionInfo>
 						<VersionInfo Name="DLL">False</VersionInfo>
-						<VersionInfo Name="Locale">1049</VersionInfo>
-						<VersionInfo Name="CodePage">1251</VersionInfo>
+						<VersionInfo Name="Locale">1033</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
 					</VersionInfo>
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>

@@ -15,7 +15,7 @@ __fastcall TEditFrame::TEditFrame(TWinControl* Owner, const TColumns &aColumn)
 	: TFrame(Owner) {
 	Parent = Owner;
 	Name = "_" + UIntToStr(Cardinal(this));
-	FieldName->Caption = aColumn.CaptionField;
+	FieldName->Caption = aColumn.DataField;
 	FieldEditor->DataField = aColumn.DataField;
 }
 // ---------------------------------------------------------------------------

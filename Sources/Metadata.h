@@ -11,7 +11,6 @@ using namespace std;
 // ---------------------------------------------------------------------------
 struct TColumns {
 	String DataField;
-	String CaptionField;
 	String ListField;
 	String KeyTable;
 	String KeyField;
@@ -27,7 +26,7 @@ private:
 
 public:
 	String NameTable;
-	String CaptionTable;
+	bool ReadOnly;
 
 	size_t size() const {
 		return Columns.size();
@@ -55,27 +54,31 @@ public:
 	}
 
 private:
-	void AddTable(const String &aNameTable, const String &aCaptionTable) {
+	void AddTable(const String &aNameTable) {
 		TTable tmp;
 		tmp.NameTable = aNameTable;
-		tmp.CaptionTable = aCaptionTable;
+		tmp.ReadOnly = false;
 		Tables.push_back(tmp);
 	}
 
-	void AddColumn(const String &aDataField, const String &aCaptionField) {
+	void AddReport(const String &aNameTable) {
+		TTable tmp;
+		tmp.NameTable = aNameTable;
+		tmp.ReadOnly = true;
+		Tables.push_back(tmp);
+	}
+
+	void AddColumn(const String &aDataField) {
 		TColumns tmp;
 		tmp.DataField = aDataField;
-		tmp.CaptionField = aCaptionField;
 		tmp.Primary = false;
 		Tables.back().Columns.push_back(tmp);
 	}
 
-	void AddKey(const String &aDataField, const String &aCaptionField,
-		const String &aListField, const String &aKeyTable,
-		const String &aKeyField) {
+	void AddKey(const String &aDataField, const String &aListField,
+		const String &aKeyTable, const String &aKeyField) {
 		TColumns tmp;
 		tmp.DataField = aDataField;
-		tmp.CaptionField = aCaptionField;
 		tmp.ListField = aListField;
 		tmp.KeyTable = aKeyTable;
 		tmp.KeyField = aKeyField;

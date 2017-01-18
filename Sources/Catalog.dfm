@@ -17,13 +17,11 @@ object Directory: TDirectory
   TextHeight = 13
   object ControlPanel: TPanel
     Left = 0
-    Top = 300
+    Top = 302
     Width = 533
-    Height = 82
+    Height = 80
     Align = alBottom
-    AutoSize = True
     BevelOuter = bvNone
-    Constraints.MinWidth = 533
     TabOrder = 0
     object AddBtn: TSpeedButton
       Left = 8
@@ -224,15 +222,6 @@ object Directory: TDirectory
       Height = 21
       TabOrder = 1
     end
-    object FilterPanel: TPanel
-      Left = 0
-      Top = 82
-      Width = 540
-      Height = 0
-      AutoSize = True
-      Constraints.MinWidth = 540
-      TabOrder = 5
-    end
     object FilterEdit: TEdit
       Left = 287
       Top = 55
@@ -260,18 +249,19 @@ object Directory: TDirectory
     Left = 0
     Top = 0
     Width = 533
-    Height = 300
+    Height = 302
     Align = alClient
     BevelOuter = bvNone
-    Constraints.MinHeight = 300
     TabOrder = 1
+    ExplicitHeight = 300
     object DBGrid: TDBGrid
       Left = 0
       Top = 0
       Width = 533
-      Height = 300
+      Height = 302
       Align = alClient
       DataSource = DataSource
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET

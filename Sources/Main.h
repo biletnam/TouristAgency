@@ -17,6 +17,10 @@ __published:	// IDE-managed Components
 	TMainMenu *MainMenu;
 	TMenuItem *CatalogItem;
 	TImage *BackGround;
+	TMenuItem *ActionItem;
+	TMenuItem *SaleItem;
+	TMenuItem *ReportItem;
+	void __fastcall SaleItemClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAgency(TComponent* Owner);

@@ -55,7 +55,7 @@ static const String GetOrderFields(const TTable &aTable) {
 		if (i > 0)
 			res += "|";
 
-		res += aTable[i].CaptionField + "|ORDER BY ";
+		res += aTable[i].DataField + "|ORDER BY ";
 		if (aTable[i].Primary)
 			res += aTable[i].KeyTable + "." + aTable[i].ListField;
 		else
@@ -71,11 +71,12 @@ static const String GetFilterFields(const TTable &aTable) {
 		if (i > 0)
 			res += "|";
 
-		res += aTable[i].CaptionField + "| ";
+		res += aTable[i].DataField + "|CStr(";
 		if (aTable[i].Primary)
 			res += aTable[i].KeyTable + "." + aTable[i].ListField;
 		else
 			res += aTable.NameTable + "." + aTable[i].DataField;
+		res += ")";
 	}
 	return res;
 }
@@ -83,7 +84,13 @@ static const String GetFilterFields(const TTable &aTable) {
 // ---------------------------------------------------------------------------
 __fastcall TDirectory::TDirectory(TComponent* Owner, const TTable &aTable)
 	: TForm(Owner), fTable(aTable) {
-	Caption = fTable.CaptionTable;
+	Caption = fTable.NameTable;
+
+	if (fTable.ReadOnly) {
+		AddBtn->Enabled = false;
+		DelBtn->Enabled = false;
+		EditBtn->Enabled = false;
+	}
 
 	for (size_t i = 0; i < fTable.size(); i++) {
 		TColumn *fCol = DBGrid->Columns->Add();
@@ -92,7 +99,7 @@ __fastcall TDirectory::TDirectory(TComponent* Owner, const TTable &aTable)
 		else
 			fCol->FieldName = fTable[i].DataField;
 
-		fCol->Title->Caption = fTable[i].CaptionField;
+		fCol->Title->Caption = fTable[i].DataField;
 		fCol->Width = 10 + Canvas->TextWidth(fCol->Title->Caption);
 	}
 
@@ -152,4 +159,3 @@ void __fastcall TDirectory::DelBtnClick(TObject *Sender) {
 		TCellEditor(this, REMOVE, fTable, ADOQuery);
 }
 // ---------------------------------------------------------------------------
-
