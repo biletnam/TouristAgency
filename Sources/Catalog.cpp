@@ -52,33 +52,34 @@ static const String GenFromSQL(const TTable &aTable) {
 static const String GetOrderFields(const TTable &aTable) {
 	String res = "";
 	for (size_t i = 0; i < aTable.size(); i++) {
-		if (i > 0)
-			res += "|";
+		if (!aTable[i].Visible)
+			continue;
 
 		res += aTable[i].DataField + "|ORDER BY ";
 		if (aTable[i].Primary)
 			res += aTable[i].KeyTable + "." + aTable[i].ListField;
 		else
 			res += aTable.NameTable + "." + aTable[i].DataField;
+		res += "|";
 	}
-	return res;
+	return res.SubString(1, res.Length() - 1);
 }
 
 // ---------------------------------------------------------------------------
 static const String GetFilterFields(const TTable &aTable) {
 	String res = "";
 	for (size_t i = 0; i < aTable.size(); i++) {
-		if (i > 0)
-			res += "|";
+		if (!aTable[i].Visible)
+			continue;
 
 		res += aTable[i].DataField + "|CStr(";
 		if (aTable[i].Primary)
 			res += aTable[i].KeyTable + "." + aTable[i].ListField;
 		else
 			res += aTable.NameTable + "." + aTable[i].DataField;
-		res += ")";
+		res += ")|";
 	}
-	return res;
+	return res.SubString(1, res.Length() - 1);
 }
 
 // ---------------------------------------------------------------------------
@@ -101,6 +102,7 @@ __fastcall TDirectory::TDirectory(TComponent* Owner, const TTable &aTable)
 
 		fCol->Title->Caption = fTable[i].DataField;
 		fCol->Width = 10 + Canvas->TextWidth(fCol->Title->Caption);
+		fCol->Visible = fTable[i].Visible;
 	}
 
 	FilterField->Filter = GetFilterFields(fTable);

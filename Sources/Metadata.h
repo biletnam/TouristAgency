@@ -15,6 +15,7 @@ struct TColumns {
 	String KeyTable;
 	String KeyField;
 	bool Primary;
+	bool Visible;
 };
 
 // ---------------------------------------------------------------------------
@@ -72,6 +73,7 @@ private:
 		TColumns tmp;
 		tmp.DataField = aDataField;
 		tmp.Primary = false;
+		tmp.Visible = true;
 		Tables.back().Columns.push_back(tmp);
 	}
 
@@ -83,6 +85,15 @@ private:
 		tmp.KeyTable = aKeyTable;
 		tmp.KeyField = aKeyField;
 		tmp.Primary = true;
+		tmp.Visible = true;
+		Tables.back().Columns.push_back(tmp);
+	}
+
+	void AddId(const String &aDataField) {
+		TColumns tmp;
+		tmp.DataField = aDataField;
+		tmp.Primary = false;
+		tmp.Visible = false;
 		Tables.back().Columns.push_back(tmp);
 	}
 };

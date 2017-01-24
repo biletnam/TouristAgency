@@ -48,11 +48,14 @@ __fastcall TCellEditor::TCellEditor(TComponent* Owner, CreateType aCType,
 	const TTable &aTable, TADOQuery *aIBQuery)
 	: TForm(Owner), fADOQuery(aIBQuery) {
 	Caption = "Редактор таблицы \"" + aTable.NameTable + "\"";
-	for (size_t i = 0; i < aTable.size(); i++)
+	for (size_t i = 0; i < aTable.size(); i++) {
+		if (!aTable[i].Visible)
+			continue;
 		if (aTable[i].Primary)
 			TBoxFrame(EditPanel, aTable[i]);
 		else
 			TEditFrame(EditPanel, aTable[i]);
+	}
 
 	ADOQuery->SQL->Append(GenSelectSQL(aTable));
 	ADOQuery->SQL->Append(GenFromSQL(aTable));

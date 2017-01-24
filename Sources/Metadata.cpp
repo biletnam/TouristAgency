@@ -16,16 +16,20 @@ DBMetadata::DBMetadata() {
 	// Добавление справочников
 
 	AddTable("Клиенты");
+	AddId("Код");
 	AddColumn("ФИО");
 
 	AddTable("Страны");
+	AddId("Код");
 	AddColumn("Название");
 
 	AddTable("Туры");
+	AddId("Код");
 	AddColumn("Назначение");
 	AddKey("Страна", "Название", "Страны", "Код");
 
 	AddTable("Путёвки");
+	AddId("Код");
 	AddKey("Тур", "Назначение", "Туры", "Код");
 	AddKey("Клиент", "ФИО", "Клиенты", "Код");
 	AddColumn("Цена");
